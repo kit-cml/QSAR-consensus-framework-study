@@ -15,8 +15,8 @@
 ## Overview
 This repository contains the code for developing and evaluating QSAR (Quantitative Structure–Activity Relationship) models for **multi-endpoint chemical toxicity prediction**. The models employ a **consensus-based approach** integrating:
 
-- Multiple molecular fingerprints: **Morgan, MACCS, APF, RDKit+CDK**  
-- Physicochemical descriptors  
+- Multiple molecular fingerprints: **Morgan, MACCS, APF**  
+- Physicochemical descriptors (RDKIT + CDK)  
 - Machine learning algorithms: **Random Forest (RF), XGBoost (XGB), Support Vector Machine (SVM)**  
 
 Cross-validation ensures robust and reliable model performance.
