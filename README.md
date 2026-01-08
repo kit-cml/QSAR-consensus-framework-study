@@ -1,5 +1,4 @@
-# Interpretable Multi-Modality Consensus QSAR Framework  
-**Integrating Machine and Deep Learning for Enhanced Multi-Endpoint Toxicity Assessment**
+# Interpretable Multi-Modality Consensus QSAR Framework: Integrating Machine and Deep Learning for Enhanced Multi-Endpoint Toxicity Assessment
 
 **Authors:**  
 FAUZAN SYARIF NURSYAFI¹, MUHAMMAD ADNAN PRAMUDITO², YUNENDAH NUR FUADAH³, and KI MOO LIM¹,⁴,⁵**  
