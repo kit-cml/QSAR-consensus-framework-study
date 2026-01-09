@@ -58,7 +58,7 @@ The framework covers **8 mechanistically distinct toxicity endpoints**, comprisi
 
 ### Consensus Modeling
 - Single-algorithm descriptor consensus  
-- Multi-algorithm, multi-modality **AUC-weighted consensus**
+- Multi-algorithm, multi-modality
 
 ---
 
