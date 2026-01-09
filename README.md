@@ -9,7 +9,7 @@ FAUZAN SYARIF NURSYAFI¹, MUHAMMAD ADNAN PRAMUDITO², YUNENDAH NUR FUADAH³, and
 ⁴ Computational Medicine Lab, Department of Biomedical Engineering, Kumoh National Institute of Technology, Gumi, 39177, Republic of Korea  
 ⁵ Meta Heart Co., Ltd, Gumi, 39253, Republic of Korea  
 
-📧 **Corresponding authors:** [kmlim@kumoh.ac.kr](mailto:kmlim@kumoh.ac.kr), [yunendah@telkomuniversity.ac.id](mailto:yunendah@telkomuniversity.ac.id)
+**Corresponding authors:** [kmlim@kumoh.ac.kr](mailto:kmlim@kumoh.ac.kr)
 
 ---
 
