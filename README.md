@@ -16,17 +16,17 @@ FAUZAN SYARIF NURSYAFI¹, MUHAMMAD ADNAN PRAMUDITO², YUNENDAH NUR FUADAH³, and
 ## 🧩 Overview
 This repository contains the code for developing and evaluating QSAR (Quantitative Structure–Activity Relationship) models for **multi-endpoint chemical toxicity prediction** using an **interpretable multi-modality consensus framework**.
 
-### Framework Integration
-- **Molecular fingerprints:** Morgan, MACCS, Atom Pair Fingerprints (APF)  
-- **Physicochemical descriptors:** generated using RDKit and CDK  
-- **Algorithms:** Random Forest (RF), XGBoost (XGB), Support Vector Machine (SVM), and Deep Neural Network (DNN)  
+📌 **Supplementary Materials**  
+Comprehensive methodological details, dataset sources, descriptor definitions, hyperparameter configurations, and additional results are provided in:
 
-All models are trained under a **unified AUC-weighted consensus strategy** and evaluated using **stratified 10-fold cross-validation** on training sets and **independent test/external validation sets**.
+- **`Supplementary Online Materials.docx`**
+
+This document should be consulted alongside the notebooks and manuscript to ensure full reproducibility and transparency.
 
 ---
 
 ## 🧠 Toxicity Endpoints
-This study covers **8 toxicity endpoints** with a total of **30,160 unique compounds**, following the original splits from the reference datasets:
+The framework covers **8 mechanistically distinct toxicity endpoints**, comprising **30,160 unique compounds**, following the original training, test, and external validation splits reported in the source datasets:
 
 1. Skin Sensitization  
 2. Respiratory Toxicity  
@@ -39,46 +39,96 @@ This study covers **8 toxicity endpoints** with a total of **30,160 unique compo
 
 ---
 
-## ⚙️ Features
+## ⚙️ Framework Integration
 
-- **Unified Data Curation Pipeline**
-  - Structure standardization (salts/solvents, tautomers, charge normalization)
-  - Duplicate removal and label harmonization  
+### Molecular Representations
+- **Fingerprints:** Morgan, MACCS, Atom Pair Fingerprints (APF)  
+- **Physicochemical descriptors:** RDKit- and CDK-derived properties  
 
-- **Descriptor Computation**
-  - MACCS, Morgan, APF fingerprints  
-  - RDKit–CDK physicochemical properties  
+### Learning Algorithms
+- Random Forest (RF)  
+- XGBoost (XGB)  
+- Support Vector Machine (SVM)  
+- Deep Neural Network (DNN)  
 
-- **Model Training**
-  - RF, XGB, SVM, and DNN models for each descriptor–algorithm combination  
-  - Evaluation with **AUC, ACC, BACC, SEN, SPE** and **95% bootstrap confidence intervals**
+### Model Evaluation
+- Stratified **10-fold cross-validation** on training data  
+- Independent test and external validation sets  
+- Performance metrics: **AUC, ACC, BACC, SEN, SPE**, with **95% bootstrap confidence intervals**
 
-- **Consensus Modeling**
-  - Single-algorithm descriptor consensus  
-  - Multi-algorithm multi-modality consensus (AUC-weighted)
+### Consensus Modeling
+- Single-algorithm descriptor consensus  
+- Multi-algorithm, multi-modality **AUC-weighted consensus**
 
-- **Explainable AI (XAI)**
-  - Global feature importance via **SHAP**  
-  - Dependence plots for key bits/descriptors  
+---
 
-- **Applicability Domain & Chemical Space Analysis**
-  - Tanimoto-based AD for fingerprints  
-  - Leverage/Williams AD for physicochemical descriptors  
-  - UMAP visualization for train vs test/external compounds  
+## 🧪 Explainability & Reliability Analysis
+- SHAP-based explainable AI (XAI) for global and local feature attribution  
+- Structure contribution map analysis for fingerprint-based models  
+- Applicability domain (AD) assessment:
+  - Tanimoto similarity-based AD for fingerprints  
+  - Leverage/Williams plot-based AD for physicochemical descriptors  
+- UMAP-based chemical space visualization of training, test, and external compounds  
 
-- **Reproducible Environment**
-  - Fixed library versions for consistent results  
+---
+
+## 📂 Repository Structure & Notebooks
+
+### 1️⃣ Descriptor Computation & Data Preprocessing  
+**`Descriptor Computation_Preprosesing data.ipynb`**
+- Structure standardization (salts/solvents removal, charge normalization, tautomer handling)  
+- Descriptor generation (MACCS, Morgan, APF, RDKit–CDK)  
+- Label harmonization and export of QSAR-ready datasets  
+
+---
+
+### 2️⃣ Machine Learning Model Training (10-fold CV)  
+**`Training_ML_10foldCrossvalidation.ipynb`**
+- Training RF, XGB, and SVM models for each descriptor modality  
+- Stratified 10-fold cross-validation  
+- Model selection based on cross-validated AUC  
+
+---
+
+### 3️⃣ Deep Neural Network Training (10-fold CV)  
+**`Training_DNN_10foldCrossvalidation.ipynb`**
+- Construction of DNN architectures for each descriptor type  
+- Stratified 10-fold cross-validation  
+- Regularization and early stopping  
+- Saving trained models for downstream consensus modeling  
+
+---
+
+### 4️⃣ Model Evaluation & Consensus Construction  
+**`Performance_Model_Evaluation.ipynb`**
+- Loading trained base models  
+- Construction of single- and multi-modality consensus models  
+- Evaluation on independent test and external validation sets  
+- Generation of final performance tables and figures  
+
+---
+
+### 5️⃣ Chemical Space & Applicability Domain Analysis  
+**`Chemical Space_AD Analysis_Consensus.ipynb`**
+- Applicability domain assessment for individual and consensus models  
+- UMAP-based visualization of chemical space coverage  
+
+---
+
+### 6️⃣ Explainable AI (SHAP) Analysis  
+**`SHAP Analysis.ipynb`**
+- Global feature importance analysis  
+- Descriptor- and bit-level contribution interpretation  
+- Identification of key structural alerts associated with toxicity  
 
 ---
 
 ## 🧮 Dependencies
-
 | Package | Version |
-|----------|----------|
+|--------|---------|
 | Python | 3.x |
 | RDKit | 2025.3.2 |
 | CDK-pywrapper | 0.1.1 |
-| TensorFlow | 2.19.0 |
 | scikit-learn | 1.6.1 |
 | NumPy | 2.1.3 |
 | Pandas | 2.2.3 |
@@ -87,68 +137,19 @@ This study covers **8 toxicity endpoints** with a total of **30,160 unique compo
 
 ---
 
-## 🧰 Usage
-
-### 1️⃣ Compute Descriptors
-Use:  
-`Descriptor_Computation_Preprocessing_data.ipynb`
-
-Performs:
-- Structure standardization (salts/solvents, charge normalization)
-- Descriptor generation (MACCS, Morgan, APF, RDKit–CDK)
-- Exports QSAR-ready feature matrices and labels for each endpoint
-
----
-
-### 2️⃣ Train Models
-Use:  
-- `Training_ML_Fingerprint_10foldCrossvalidation.ipynb`  
-- `Training_ML_PhysicochemicalProperties_10foldCrossvalidation.ipynb`
-
-Performs:
-- Stratified 10-fold CV for RF, XGB, SVM, and DNN using each descriptor modality  
-- Selects top models based on cross-validated AUC for consensus integration  
-- Preserves original train/test or external validation splits  
-
----
-
-### 3️⃣ Evaluate & Build Consensus Models
-Use:  
-`Performance_Model_Evaluation.ipynb`
-
-Performs:
-- Loads trained base models  
-- Builds single-algorithm and multi-modality AUC-weighted consensus models  
-- Evaluates on independent test/external validation sets  
-- Computes performance metrics & confidence intervals  
-- Generates final tables and visualization outputs  
-
----
-
 ## 🧾 Notes
-This repository provides a **reproducible implementation** of the manuscript:  
+This repository corresponds to the manuscript:
+
 **“Interpretable Multi-Modality Consensus QSAR Framework Integrating Machine and Deep Learning for Enhanced Multi-Endpoint Toxicity Assessment.”**
 
-For:
-- Endpoint definitions  
-- Data curation rules  
-- Complete descriptor list (Table S1)  
-- Hyperparameter settings (Table S2)  
-
-See the **Supporting Information** section of the manuscript.
+Additional methodological details, descriptor lists (Table S1), hyperparameter settings (Table S2), and dataset references are provided in the **Supplementary Online Materials**.
 
 ---
 
 ## 📚 Citation
-If you use this repository in your research, please cite the article once published:  
-> Citation details will be updated after publication.
+Citation details will be updated upon publication.
 
 ---
 
 ## 🧠 Acknowledgments
-This work is conducted under the **Computational Medicine Lab**, Kumoh National Institute of Technology, Gumi, Republic of Korea.
-
----.
-
----
-
+This work was conducted at the **Computational Medicine Lab**, Kumoh National Institute of Technology, Gumi, Republic of Korea.
