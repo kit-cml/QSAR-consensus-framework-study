@@ -62,7 +62,7 @@ The framework covers **8 mechanistically distinct toxicity endpoints**, comprisi
 
 ---
 
-## 🧠 Explainability & Reliability Analysis
+## 🧠 Explainability & Interpretability AI (XAI) Analysis
 - SHAP-based explainable AI (XAI) for global and local feature attribution  
 - Structure contribution map analysis for fingerprint-based models  
 - Applicability domain (AD) assessment:
@@ -104,7 +104,7 @@ The framework covers **8 mechanistically distinct toxicity endpoints**, comprisi
 - Loading trained base models  
 - Construction of single- and multi-modality consensus models  
 - Evaluation on independent test and external validation sets  
-- Generation of final performance tables and figures  
+- Generation of final performance metrics 
 
 ---
 
